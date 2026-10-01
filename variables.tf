@@ -101,6 +101,29 @@ variable "eventhub_base_name" {
   description = "Base name for Event Hubs; a 1-based index zero-padded to 3 digits is appended (evh-socaas-aue-001, ...)."
 }
 
+variable "eventhub_additional_names" {
+  type        = list(string)
+  default     = []
+  description = "Optional explicitly named Event Hubs to create alongside the numbered ones (e.g. a hub a vendor has asked for by name). Each is created with the same partition count, retention and Capture settings as the numbered hubs."
+
+  validation {
+    condition = alltrue([
+      for name in var.eventhub_additional_names : can(regex("^[a-z][a-z0-9-]{2,49}$", name))
+    ])
+    error_message = "Each additional Event Hub name must be 3-50 characters, start with a lowercase letter, and contain only lowercase letters, digits and hyphens."
+  }
+
+  validation {
+    condition     = length(var.eventhub_additional_names) == length(toset(var.eventhub_additional_names))
+    error_message = "Additional Event Hub names must be unique."
+  }
+
+  validation {
+    condition     = length(setintersection(var.eventhub_additional_names, local.numbered_eventhub_names)) == 0
+    error_message = "Additional Event Hub names must not collide with the auto-generated numbered hub names (eventhub_base_name + zero-padded index)."
+  }
+}
+
 variable "eventhub_partition_count" {
   type        = number
   default     = 4

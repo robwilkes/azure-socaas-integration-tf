@@ -38,6 +38,9 @@ module "socaas_integration" {
   eventhub_base_name      = "evh-socaas-aue-"
   eventhub_count          = 1
 
+  # Optional: explicitly named Event Hubs created alongside the numbered ones.
+  # eventhub_additional_names = ["evh-socaas-aue-extra"]
+
   app_registration_name = "Integration-SOCaaS-AzureLogs-Prod"
 
   allowed_ip_addresses = [

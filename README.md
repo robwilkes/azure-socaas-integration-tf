@@ -59,6 +59,7 @@ The module exposes a number of inputs for naming, networking, capture, Entra per
 | allowed_ip_addresses            | Public IPs/CIDRs allowed through the storage and Event Hub network rules. |
 | eventhub_namespace_name         | Name of the Event Hubs namespace.                                         |
 | eventhub_count                  | Number of Event Hubs to create.                                           |
+| eventhub_additional_names       | Additional explicitly named Event Hubs created alongside the numbered ones. |
 | app_registration_name           | Display name for the Entra application registration.                      |
 | api_permissions                 | API permissions requested by the application.                             |
 | create_client_secret            | Creates a client secret and exposes it as a sensitive output.             |
