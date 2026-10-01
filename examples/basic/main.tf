@@ -35,7 +35,7 @@ module "socaas_integration" {
 
   storage_account_name    = "stsocaasaue001"
   eventhub_namespace_name = "evhns-socaas-aue-001"
-  eventhub_base_name      = "evh-socaas-aue-00"
+  eventhub_base_name      = "evh-socaas-aue-"
   eventhub_count          = 1
 
   app_registration_name = "Integration-SOCaaS-AzureLogs-Prod"

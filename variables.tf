@@ -97,8 +97,8 @@ variable "eventhub_count" {
 
 variable "eventhub_base_name" {
   type        = string
-  default     = "evh-socaas-aue-00"
-  description = "Base name for Event Hubs; a 1-based index is appended (evh-socaas-aue-001, ...)."
+  default     = "evh-socaas-aue-"
+  description = "Base name for Event Hubs; a 1-based index zero-padded to 3 digits is appended (evh-socaas-aue-001, ...)."
 }
 
 variable "eventhub_partition_count" {
